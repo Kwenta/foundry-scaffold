@@ -2,50 +2,60 @@
 
 [![Github Actions][gha-badge]][gha] 
 [![Foundry][foundry-badge]][foundry] 
-[![License: MIT][license-badge]][license]
+[![License: GPL-3.0][license-badge]][license]
 
 [gha]: https://github.com/Kwenta/foundry-scaffold/actions
 [gha-badge]: https://github.com/Kwenta/foundry-scaffold/actions/workflows/test.yml/badge.svg
 [foundry]: https://getfoundry.sh/
 [foundry-badge]: https://img.shields.io/badge/Built%20with-Foundry-FFDB1C.svg
-[license]: https://opensource.org/licenses/MIT
-[license-badge]: https://img.shields.io/badge/License-MIT-blue.svg
+[license]: https://opensource.org/license/GPL-3.0/
+[license-badge]: https://img.shields.io/badge/GitHub-GPL--3.0-informational
 
 Template for a foundry project.
 
 ## Contracts
 
-```
-script/TestnetDeploy.s.sol ^0.8.13
-└── lib/forge-std/src/Script.sol >=0.6.0 <0.9.0
-    ├── lib/forge-std/src/console.sol >=0.4.22 <0.9.0
-    ├── lib/forge-std/src/console2.sol >=0.4.22 <0.9.0
-    └── lib/forge-std/src/StdJson.sol >=0.6.0 <0.9.0
-        └── lib/forge-std/src/Vm.sol >=0.6.0 <0.9.0
-src/Counter.sol ^0.8.13
-test/Counter.t.sol ^0.8.13
-├── lib/forge-std/src/Test.sol >=0.6.0 <0.9.0
-│   ├── lib/forge-std/src/Script.sol >=0.6.0 <0.9.0 (*)
-│   └── lib/forge-std/lib/ds-test/src/test.sol >=0.5.0
-└── src/Counter.sol ^0.8.13
-```
-
-## Code Coverage
+> `tree src/`
 
 ```
-+----------------------------+---------------+---------------+---------------+---------------+
-| File                       | % Lines       | % Statements  | % Branches    | % Funcs       |
-+============================================================================================+
-| script/TestnetDeploy.s.sol | 0.00% (0/3)   | 0.00% (0/4)   | 100.00% (0/0) | 0.00% (0/1)   |
-|----------------------------+---------------+---------------+---------------+---------------|
-| src/Counter.sol            | 100.00% (2/2) | 100.00% (2/2) | 100.00% (0/0) | 100.00% (2/2) |
-|----------------------------+---------------+---------------+---------------+---------------|
-| Total                      | 40.00% (2/5)  | 33.33% (2/6)  | 100.00% (0/0) | 66.67% (2/3)  |
-+----------------------------+---------------+---------------+---------------+---------------+
+src/
+└── Counter.sol
 ```
+
+## Tests
+
+1. Follow the [Foundry guide to working on an existing project](https://book.getfoundry.sh/projects/working-on-an-existing-project.html)
+
+2. Build project
+
+```
+npm run compile
+```
+
+3. Execute tests (requires rpc url(s) to be set in `.env`)
+
+```
+npm run test
+```
+
+4. Run specific test
+    > `OPTIMISM_GOERLI_RPC_URL` can be replaced with `OPTIMISM_RPC_URL` if a mainnet fork is desired
+
+```
+forge test --fork-url $(grep OPTIMISM_GOERLI_RPC_URL .env | cut -d '=' -f2) --match-test TEST_NAME -vvv
 
 ## Deployment Addresses
 
-#### Optimism
+> See `deployments/` folder
 
-#### Optimism Goerli
+1. Optimism deployments found in `deployments/Optimism.json`
+2. Optimism Goerli deployments found in `deployments/OptimismGoerli.json`
+3. Base deployments found in `deployments/Base.json`
+4. Base Goerli deployments found in `deployments/BaseGoerli.json`
+
+## Audits
+
+> See `audits/` folder
+
+1. Internal audits found in `audits/internal/`
+2. External audits found in `audits/external/`
