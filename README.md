@@ -20,7 +20,7 @@ Template foundry project created by Kwenta
 3. Update the `README.md` with your project name, description, etc.
 4. Add required **Repository Secrets** to your github repository settings
 > Navigate to `Settings > Secrets and variables > Actions` and add whatever secrets are required for your project's CI.
-> For example, in this project the following secrets are required: `OPTIMISM_GOERLI_RPC_URL` and `ETHERSCAN_API_KEY`. See `.github/workflows/*` for more details.
+5. The current template CI will fail until the following repository secrets are added: `OPTIMISM_GOERLI_RPC_URL` and `ETHERSCAN_API_KEY`. See `.github/workflows/*` for more details.
 
 ## Contracts
 
@@ -52,6 +52,7 @@ npm run test
 
 ```
 forge test --fork-url $(grep OPTIMISM_GOERLI_RPC_URL .env | cut -d '=' -f2) --match-test TEST_NAME -vvv
+```
 
 ## Deployment Addresses
 
