@@ -13,6 +13,15 @@
 
 Template for a foundry project.
 
+## Getting Started
+
+1. Create an `.env` file using the `.env.example` file as a template
+2. Update `package.json` with your project name, description, etc.
+3. Update the `README.md` with your project name, description, etc.
+4. Add required **Repository Secrets** to your github repository settings
+> Navigate to `Settings > Secrets and variables > Actions` and add whatever secrets are required for your project's CI.
+> For example, in this project the following secrets are required: `OPTIMISM_GOERLI_RPC_URL` and `ETHERSCAN_API_KEY`. See `.github/workflows/*` for more details.
+
 ## Contracts
 
 > `tree src/`
