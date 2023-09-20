@@ -11,7 +11,7 @@
 [license]: https://opensource.org/license/GPL-3.0/
 [license-badge]: https://img.shields.io/badge/GitHub-GPL--3.0-informational
 
-Template for a foundry project.
+Template foundry project created by Kwenta
 
 ## Getting Started
 
