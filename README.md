@@ -21,6 +21,8 @@ Template foundry project created by Kwenta
 4. Add required **Repository Secrets** to your github repository settings
 > Navigate to `Settings > Secrets and variables > Actions` and add whatever secrets are required for your project's CI.
 5. The current template CI will fail until the following repository secrets are added: `OPTIMISM_GOERLI_RPC_URL` and `ETHERSCAN_API_KEY`. See `.github/workflows/*` for more details.
+6. Finally, run `npm run coverage:generate-lcov` to generate a coverage report for your project and commit the results to your remote repository
+> This will be used by the CI to determine when changes to your project have caused the coverage to drop below a certain threshold.
 
 ## Contracts
 
