@@ -15,6 +15,13 @@ contract Bootstrap is Test {
 
     Counter internal counter;
 
+    function initializeLocal() internal {
+        BootstrapLocal bootstrap = new BootstrapLocal();
+        (address counterAddress) = bootstrap.init();
+
+        counter = Counter(counterAddress);
+    }
+
     function initializeOptimismGoerli() internal {
         BootstrapOptimismGoerli bootstrap = new BootstrapOptimismGoerli();
         (address counterAddress) = bootstrap.init();
@@ -30,6 +37,14 @@ contract Bootstrap is Test {
     }
 
     /// @dev add other networks here as needed (ex: Base, BaseGoerli)
+}
+
+contract BootstrapLocal is Setup {
+    function init() public returns (address) {
+        address counterAddress = Setup.deploySystem();
+
+        return counterAddress;
+    }
 }
 
 contract BootstrapOptimism is Setup, OptimismParameters {
