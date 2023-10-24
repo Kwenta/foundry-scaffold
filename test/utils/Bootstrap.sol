@@ -13,16 +13,16 @@ import {Test} from "lib/forge-std/src/Test.sol";
 contract Bootstrap is Test {
     using console2 for *;
 
-    Counter public counter;
+    Counter internal counter;
 
-    function initializeOptimismGoerli() public {
+    function initializeOptimismGoerli() internal {
         BootstrapOptimismGoerli bootstrap = new BootstrapOptimismGoerli();
         (address counterAddress) = bootstrap.init();
 
         counter = Counter(counterAddress);
     }
 
-    function initializeOptimism() public {
+    function initializeOptimism() internal {
         BootstrapOptimismGoerli bootstrap = new BootstrapOptimismGoerli();
         (address counterAddress) = bootstrap.init();
 
