@@ -4,7 +4,7 @@ pragma solidity 0.8.18;
 import {console2} from "lib/forge-std/src/console2.sol";
 import {
     Counter,
-    OptimismGoerliParameters,
+    OptimismSepoliaParameters,
     OptimismParameters,
     Setup
 } from "script/Deploy.s.sol";
@@ -22,21 +22,21 @@ contract Bootstrap is Test {
         counter = Counter(counterAddress);
     }
 
-    function initializeOptimismGoerli() internal {
-        BootstrapOptimismGoerli bootstrap = new BootstrapOptimismGoerli();
+    function initializeOptimismSepolia() internal {
+        BootstrapOptimismSepolia bootstrap = new BootstrapOptimismSepolia();
         (address counterAddress) = bootstrap.init();
 
         counter = Counter(counterAddress);
     }
 
     function initializeOptimism() internal {
-        BootstrapOptimismGoerli bootstrap = new BootstrapOptimismGoerli();
+        BootstrapOptimismSepolia bootstrap = new BootstrapOptimismSepolia();
         (address counterAddress) = bootstrap.init();
 
         counter = Counter(counterAddress);
     }
 
-    /// @dev add other networks here as needed (ex: Base, BaseGoerli)
+    /// @dev add other networks here as needed (ex: Base, BaseSepolia)
 }
 
 contract BootstrapLocal is Setup {
@@ -55,7 +55,7 @@ contract BootstrapOptimism is Setup, OptimismParameters {
     }
 }
 
-contract BootstrapOptimismGoerli is Setup, OptimismGoerliParameters {
+contract BootstrapOptimismSepolia is Setup, OptimismSepoliaParameters {
     function init() public returns (address) {
         address counterAddress = Setup.deploySystem();
 
@@ -63,4 +63,4 @@ contract BootstrapOptimismGoerli is Setup, OptimismGoerliParameters {
     }
 }
 
-// add other networks here as needed (ex: Base, BaseGoerli)
+// add other networks here as needed (ex: Base, BaseSepolia)

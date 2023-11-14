@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 pragma solidity 0.8.18;
 
-import {BaseGoerliParameters} from
-    "script/utils/parameters/BaseGoerliParameters.sol";
+import {BaseSepoliaParameters} from
+    "script/utils/parameters/BaseSepoliaParameters.sol";
 import {BaseParameters} from "script/utils/parameters/BaseParameters.sol";
-import {OptimismGoerliParameters} from
-    "script/utils/parameters/OptimismGoerliParameters.sol";
+import {OptimismSepoliaParameters} from
+    "script/utils/parameters/OptimismSepoliaParameters.sol";
 import {OptimismParameters} from
     "script/utils/parameters/OptimismParameters.sol";
 import {Script} from "lib/forge-std/src/Script.sol";
@@ -34,10 +34,10 @@ contract DeployBase is Setup, BaseParameters {
     }
 }
 
-/// @dev steps to deploy and verify on Base Goerli:
+/// @dev steps to deploy and verify on Base Sepolia:
 /// (1) load the variables in the .env file via `source .env`
-/// (2) run `forge script script/Deploy.s.sol:DeployBaseGoerli --rpc-url $BASE_GOERLI_RPC_URL --etherscan-api-key $BASESCAN_API_KEY --broadcast --verify -vvvv`
-contract DeployBaseGoerli is Setup, BaseGoerliParameters {
+/// (2) run `forge script script/Deploy.s.sol:DeployBaseSepolia --rpc-url $BASE_SEPOLIA_RPC_URL --etherscan-api-key $BASESCAN_API_KEY --broadcast --verify -vvvv`
+contract DeployBaseSepolia is Setup, BaseSepoliaParameters {
     function run() public {
         uint256 privateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(privateKey);
@@ -62,11 +62,11 @@ contract DeployOptimism is Setup, OptimismParameters {
     }
 }
 
-/// @dev steps to deploy and verify on Optimism Goerli:
+/// @dev steps to deploy and verify on Optimism Sepolia:
 /// (1) load the variables in the .env file via `source .env`
-/// (2) run `forge script script/Deploy.s.sol:DeployOptimismGoerli --rpc-url $OPTIMISM_GOERLI_RPC_URL --etherscan-api-key $OPTIMISM_ETHERSCAN_API_KEY --broadcast --verify -vvvv`
+/// (2) run `forge script script/Deploy.s.sol:DeployOptimismSepolia --rpc-url $OPTIMISM_SEPOLIA_RPC_URL --etherscan-api-key $OPTIMISM_ETHERSCAN_API_KEY --broadcast --verify -vvvv`
 
-contract DeployOptimismGoerli is Setup, OptimismGoerliParameters {
+contract DeployOptimismSepolia is Setup, OptimismSepoliaParameters {
     function run() public {
         uint256 privateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(privateKey);
