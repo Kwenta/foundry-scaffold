@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity 0.8.18;
+pragma solidity 0.8.25;
 
 import {console2} from "lib/forge-std/src/console2.sol";
 import {
